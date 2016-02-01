@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="updatecieletronica.FXMLUpdateCiEletronicaController">
+    <children>
+        <Button fx:id="btnStartUpdate" layoutX="138.0" layoutY="135.0" onAction="#hdlButtonStartUpdate" text="Iniciar Atualizaçao" AnchorPane.leftAnchor="20.0" />
+      <Label layoutX="21.0" layoutY="14.0" text="1 - Conexao banco de dados" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0" />
+      <Label layoutX="21.0" layoutY="39.0" text="2 - Copiando arquivos" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="45.0" />
+      <Label layoutX="21.0" layoutY="71.0" text="3 - Apagando arquivos temporais" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="75.0" />
+      <Label layoutX="21.0" layoutY="100.0" text="4 - Atualização feita" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="105.0" />
+      <Button fx:id="btnFechar" layoutX="112.0" layoutY="161.0" mnemonicParsing="false" onAction="#hdlButtonFechar" text="Fechar" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="135.0" />
+      <Label fx:id="lblPaso01" layoutX="244.0" layoutY="15.0" text="." textFill="#fc0000" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="15.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPaso02" layoutX="244.0" layoutY="45.0" text="." textFill="#fc0000" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="45.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPaso03" layoutX="244.0" layoutY="75.0" text="." textFill="#fc0000" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="75.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPaso04" layoutX="244.0" layoutY="105.0" text="." textFill="#fc0000" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="105.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
