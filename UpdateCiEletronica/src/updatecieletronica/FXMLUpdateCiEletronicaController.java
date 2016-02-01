@@ -83,14 +83,25 @@ public class FXMLUpdateCiEletronicaController implements Initializable {
         //Conexão banco de dados
         DB db = new DB();
         try {
-            Connection conn=db.dbConnect("jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=CI_ELETRONICO","sa","237recursos2211");
+            //Connection conn=db.dbConnect("jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=CI_ELETRONICO","sa","237recursos2211");
             //Connection conn=db.dbConnect("jdbc:sqlserver://172.22.8.17:1433;databaseName=Trans_SCC","sa","237recursos2211");
+            Connection conn=db.dbConnect("jdbc:sqlserver://172.22.8.22:1433;databaseName=CI_ELETRONICO","sa","237recursos2211");
             if (null == conn){
                 lblPaso01.setVisible(true);
                 lblPaso01.setText("==> ERRO");
                 bUpdateFeito = false;
                 
-            } else {    
+            } else {   
+                if (32==nArquitetura){
+                    
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Atualização CI-Eletrônica");
+                    alert.setHeaderText("O seu Windows é de 32 bits e não poderá ser atualizado através deste instalador");
+                    alert.setContentText("Para atualizar seu sistema CI Eletrônica favor contatar suporte ASSTI");
+                    alert.showAndWait();                    
+                    exit(0);
+                    
+                }
                 lblPaso01.setVisible(true);
                 lblPaso01.setText("==> OK");
 
