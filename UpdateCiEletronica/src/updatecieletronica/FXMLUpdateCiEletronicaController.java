@@ -83,9 +83,9 @@ public class FXMLUpdateCiEletronicaController implements Initializable {
         //Conexão banco de dados
         DB db = new DB();
         try {
-            //Connection conn=db.dbConnect("jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=CI_ELETRONICO","sa","237recursos2211");
+            Connection conn=db.dbConnect("jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=CI_ELETRONICO","sa","237recursos2211");
             //Connection conn=db.dbConnect("jdbc:sqlserver://172.22.8.17:1433;databaseName=Trans_SCC","sa","237recursos2211");
-            Connection conn=db.dbConnect("jdbc:sqlserver://172.22.8.22:1433;databaseName=CI_ELETRONICO","sa","237recursos2211");
+            //Connection conn=db.dbConnect("jdbc:sqlserver://172.22.8.22:1433;databaseName=CI_ELETRONICO","sa","237recursos2211");
             if (null == conn){
                 lblPaso01.setVisible(true);
                 lblPaso01.setText("==> ERRO");
@@ -223,10 +223,19 @@ public class FXMLUpdateCiEletronicaController implements Initializable {
     }  
     
      public static void copyFile(String from, String to, Boolean overwrite) {
+         boolean bCanWrite = false;
+         String strParent = "";
 
         try {
             File fromFile = new File(from);
             File toFile = new File(to);
+            
+            strParent = toFile.getParent();
+            
+            bCanWrite = toFile.getParentFile().canWrite();
+            toFile.setExecutable(true, false);
+            toFile.setReadable(true, false);
+            toFile.setWritable(true, false);
 
             if (!fromFile.exists()) {
                 throw new IOException("File not found: " + from);
@@ -266,7 +275,17 @@ public class FXMLUpdateCiEletronicaController implements Initializable {
             try {
 
                 fis = new FileInputStream(fromFile);
-                fos = new FileOutputStream(toFile);
+                //fos = new FileOutputStream(toFile);
+                
+                try {
+                    fos = new FileOutputStream(toFile);
+                    //fos = new FileOutputStream("C:\\Temporal\\CI_Eletronico.jar");
+                }catch (IOException ex) {
+                    ex.printStackTrace();
+                    System.out.println("Problema com jar destino. " + ex);
+                     
+                }
+                
                 byte[] buffer = new byte[4096];
                 int bytesRead;
 
@@ -292,8 +311,8 @@ public class FXMLUpdateCiEletronicaController implements Initializable {
             }
 
         } catch (Exception e) {
-            System.out.println("Problems when copying file.");
-        }
+            System.out.println("Problems when copying file." + e);
+        } 
     }
      public boolean ApagarArquivoTemporal(String strPath){
         File fJar = null;        
